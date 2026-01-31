@@ -1,0 +1,25 @@
+{
+  "miniprogramRoot": "miniprogram/",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "enhance": true,
+    "cloudfunctionRoot": "./cloudfunctions/",
+    "newFeature": {
+      "useApiHost": true,
+      "useApiHook": true,
+      "useExtendedLib": true,
+      "coverView": true,
+      "pageScroll": true,
+      "pageStyle": true
+    }
+  },
+  "appid": "your-appid-here",
+  "projectname": "article-illustrator",
+  "libVersion": "2.33.0",
+  "compileType": "miniprogram",
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate/"
+}

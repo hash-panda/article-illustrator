@@ -1,0 +1,104 @@
+<!-- pages/index/index.wxml -->
+<view class="container">
+  <!-- 头部 -->
+  <view class="header">
+    <text class="title">🎨 一键配图助手</text>
+    <text class="subtitle">给文章智能配图，提升阅读体验</text>
+  </view>
+
+  <!-- 文章输入区域 -->
+  <view class="input-section">
+    <view class="section-title">1️⃣ 输入文章</view>
+    <textarea
+      class="article-input"
+      placeholder="在此粘贴您的公众号文章内容..."
+      value="{{article}}"
+      bindinput="onArticleInput"
+      maxlength="10000"
+      auto-height
+      show-confirm-bar="{{false}}"
+    ></textarea>
+    <view class="char-count">{{article.length}}/10000</view>
+  </view>
+
+  <!-- 风格选择 -->
+  <view class="style-section">
+    <view class="section-title">2️⃣ 选择配图风格</view>
+    <view class="style-grid">
+      <view
+        class="style-item {{style === 'tech' ? 'active' : ''}}"
+        data-style="tech"
+        bindtap="selectStyle"
+      >
+        <text class="style-emoji">🔬</text>
+        <text class="style-name">科技</text>
+        <text class="style-desc">AI/算法/技术</text>
+      </view>
+      <view
+        class="style-item {{style === 'warm' ? 'active' : ''}}"
+        data-style="warm"
+        bindtap="selectStyle"
+      >
+        <text class="style-emoji">☀️</text>
+        <text class="style-name">温暖</text>
+        <text class="style-desc">成长/情感/生活</text>
+      </view>
+      <view
+        class="style-item {{style === 'minimal' ? 'active' : ''}}"
+        data-style="minimal"
+        bindtap="selectStyle"
+      >
+        <text class="style-emoji">⬜</text>
+        <text class="style-name">极简</text>
+        <text class="style-desc">专业/商务/简洁</text>
+      </view>
+      <view
+        class="style-item {{style === 'playful' ? 'active' : ''}}"
+        data-style="playful"
+        bindtap="selectStyle"
+      >
+        <text class="style-emoji">🎮</text>
+        <text class="style-name">趣味</text>
+        <text class="style-desc">轻松/创意/活泼</text>
+      </view>
+      <view
+        class="style-item {{style === 'notion' ? 'active' : ''}}"
+        data-style="notion"
+        bindtap="selectStyle"
+      >
+        <text class="style-emoji">📝</text>
+        <text class="style-name">线稿</text>
+        <text class="style-desc">教程/知识/笔记</text>
+      </view>
+      <view
+        class="style-item {{style === 'business' ? 'active' : ''}}"
+        data-style="business"
+        bindtap="selectStyle"
+      >
+        <text class="style-emoji">💼</text>
+        <text class="style-name">商务</text>
+        <text class="style-desc">金融/商业/报告</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 开始按钮 -->
+  <view class="button-section">
+    <button
+      class="start-button {{isGenerating ? 'generating' : ''}}"
+      bindtap="startGenerate"
+      disabled="{{!article || isGenerating}}"
+    >
+      <text wx:if="{{!isGenerating}}">开始配图</text>
+      <text wx:if="{{isGenerating}}">配图中...</text>
+    </button>
+  </view>
+
+  <!-- 免费额度提示 -->
+  <view class="tips">
+    <text class="tip-text">💡 本月剩余免费配图次数：{{freeCount}}次</text>
+  </view>
+
+  <!-- 广告位 -->
+  <ad unit-id="adunit-xxxxxxxx"></ad>
+</view>

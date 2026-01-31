@@ -1,0 +1,50 @@
+<!-- pages/preview/preview.wxml -->
+<view class="container">
+  <!-- 头部 -->
+  <view class="header">
+    <text class="title">📝 配图预览</text>
+    <view class="actions">
+      <button class="action-button" bindtap="exportMarkdown">导出MD</button>
+      <button class="action-button" bindtap="exportHTML">导出HTML</button>
+      <button class="action-button primary" bindtap="saveAll">保存全部</button>
+    </view>
+  </view>
+
+  <!-- 配图列表 -->
+  <view class="image-list">
+    <view
+      class="image-item"
+      wx:for="{{images}}"
+      wx:key="fileName"
+    >
+      <view class="image-info">
+        <text class="image-title">配图 {{index + 1}}</text>
+        <text class="image-position">插入位置：第{{item.position}}段后</text>
+      </view>
+
+      <image
+        class="image-preview"
+        src="{{item.cloudUrl}}"
+        mode="aspectFit"
+        bindtap="previewImage"
+        data-url="{{item.cloudUrl}}"
+      ></image>
+
+      <view class="image-actions">
+        <button class="small-button" bindtap="regenerateImage" data-index="{{index}}">重新生成</button>
+        <button class="small-button delete" bindtap="deleteImage" data-index="{{index}}">删除</button>
+        <button class="small-button" bindtap="moveImage" data-index="{{index}}" data-direction="up">上移</button>
+        <button class="small-button" bindtap="moveImage" data-index="{{index}}" data-direction="down">下移</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 文章预览 -->
+  <view class="article-preview">
+    <view class="section-title">文章预览</view>
+    <text class="article-content">{{articlePreview}}</text>
+  </view>
+
+  <!-- 广告位 -->
+  <ad unit-id="adunit-xxxxxxxx"></ad>
+</view>
